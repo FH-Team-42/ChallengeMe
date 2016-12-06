@@ -1,0 +1,49 @@
+ChallengeMe
+
+ChallengeMe ist ein webbasiertes Social Network, welches auf dem Trend der Challenges aus anderen Netzwerken wie Facebook aufbaut.
+Benutzer erstellen ein Profil, auf dem sie persönliche Informationen und ein Profilbild teilen können. Ferner ist es möglich,
+Freunde hinzuzufügen und ihnen Privatnachrichten zu senden. Jeder Nutzer wird einmal am Tag aufgefordert, eine Herausforderung
+zu schreiben, die mehr oder weniger einfach in den Tagesablauf integrierbar ist. Diese werden in einer Datenbank gespeichert. 
+Danach beginnt eine Votingphase, in der jedem Nutzer ein Teil der hochgeladenen Herausforderungen angezeigt werden. Diese kann
+er dann mit einem + oder einem - bewerten. Challenges mit mehr als 5 Negativbewertungen werden gelöscht. Besonders positiv 
+bewertete Challenges werden in eine Hall of Fame aufgenommen. In einem noch nicht genau bestimmten Intervall wird nun durch ein
+Zufallssystem jedem Nutzer eine Challenge zugeteilt, die dieser innerhalb einer bestimmten Zeitspanne zu erfüllen hat. Die
+Erfüllung dieser kann er beweisen, indem er ein Foto hochlädt. Dieses ist nur vom Ersteller der Challenge einsehbar, welcher
+die Komplettierung verifiziert. Der Absolvent der Herausforderung bekommt Punkte gutgeschrieben, die in ein Ranking eingehen,
+welches auf der Seite eingesehen werden kann. 
+
+Punkte:
++:
+	- Gute Challenges
+	- Challenges abschliessen
+	
+-:
+	- Gepostete Challenges bekommen viele negative Bewertungen
+	- Meldung des Profils (Durch Moderator bestätigt)
+
+Ab bestimmter Minuspunktzahl ein einwöchentlicher Bann + Reset auf 0 Punkte
+Bei drei Banns in 6 Monaten: Permaban
+
+
+Ideen (wenn Zeitüberschuss):
+	- Gruppenchallenges mit spezieller Challengekategorie
+	- Der beste Nutzer im Monat bekommt einen virtuellen Wanderpokal
+	
+	
+MODULE:
+
+Profil:
+	- Anmelden
+	- Daten ändern
+	- Profil löschen
+	- Punktesystem + Rangliste
+Freunde:
+	- Hinzufügen
+	- Entfernen
+	- PNs / Chat
+Challenges:
+	- Hochladen
+	- Editieren
+	- Bewerten
+	- Löschen
+	- Zufällige Verteilung
