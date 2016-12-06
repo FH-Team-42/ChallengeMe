@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60eaab36-7b1c-4144-a26c-9af58d4ccb14" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChallengeMe.iws" />
@@ -503,12 +502,20 @@
       <workItem from="1481030198202" duration="86000" />
       <workItem from="1481030556468" duration="141000" />
       <workItem from="1481030701540" duration="29000" />
-      <workItem from="1481030753187" duration="65000" />
+      <workItem from="1481030753187" duration="156000" />
     </task>
+    <task id="LOCAL-00001" summary="Created IntelliJ Project">
+      <created>1481030860822</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1481030860822</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321000" />
+    <option name="totallyTimeSpent" value="412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -562,7 +569,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Created IntelliJ Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created IntelliJ Project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
