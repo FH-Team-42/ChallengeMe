@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60eaab36-7b1c-4144-a26c-9af58d4ccb14" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ChallengeMe.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChallengeMe.iws" />
@@ -540,7 +539,7 @@
       <workItem from="1481030198202" duration="86000" />
       <workItem from="1481030556468" duration="141000" />
       <workItem from="1481030701540" duration="29000" />
-      <workItem from="1481030753187" duration="724000" />
+      <workItem from="1481030753187" duration="737000" />
     </task>
     <task id="LOCAL-00001" summary="Created IntelliJ Project">
       <created>1481030860822</created>
@@ -584,11 +583,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481031355196</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Created IntelliJ Project">
+      <created>1481031484892</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1481031484892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="980000" />
+    <option name="totallyTimeSpent" value="993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
