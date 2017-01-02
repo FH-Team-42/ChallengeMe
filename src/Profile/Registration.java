@@ -1,6 +1,5 @@
 package Profile;
 
-import java.io.*;
 /**
  * Created by Max on 02.01.2017.
  */
@@ -12,6 +11,8 @@ public class Registration {
         user.birthmonth = month;
         user.birthyear = year;
         user.password = password;
+
+        /* get next free id from database */
 
         return user;
     }
