@@ -1,6 +1,5 @@
 package Profile;
-
-import java.util.concurrent.ThreadLocalRandom;
+import Administration.Randomizer;
 
 /**
  * Created by Felix on 02.01.2017.
@@ -16,7 +15,6 @@ public class UserData {
     String profilePic;
     int challengesCompleted;
     int challengeAssigned;
-
     int reputation;
     int userID;
 
@@ -28,9 +26,8 @@ public class UserData {
             //generate new challenge
             int min = minChallengeIndex;
             int max = maxChallengeIndex;
-            // nextInt is normally exclusive of the top value,
-            // so add 1 to make it inclusive
-            newID = ThreadLocalRandom.current().nextInt(min, max + 1);
+            // add 1 to max because max is exclusive
+            newID = Randomizer.getRandomInt(min, max);
             //challengeRemoveFromDatabase(newID);                 //will be added to control unit
             return newID;
         } else {
