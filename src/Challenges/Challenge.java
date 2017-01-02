@@ -12,5 +12,4 @@ public class Challenge {
     int idCreator;
     int idChallenge;
     int idChallenged;
-    int cooleIDvonDerChallengeSoVong1UpdateHer;
 }
