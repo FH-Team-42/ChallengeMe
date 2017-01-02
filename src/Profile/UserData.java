@@ -7,10 +7,10 @@ import Administration.Randomizer;
 
 public class UserData {
     String username;
-
-    class birthdate {
-        int day, month, year;
-    }
+    String password;
+    int birthday;
+    int birthmonth;
+    int birthyear;
 
     String profilePic;
     int challengesCompleted;
