@@ -13,7 +13,7 @@ public class Challenge {
     int idCreator;
     int idChallenge;
     int idChallenged;
-
+  
     int vote;
 
     public Challenge(){
