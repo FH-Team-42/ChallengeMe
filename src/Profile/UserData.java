@@ -1,14 +1,18 @@
 package Profile;
 
 /**
- * Created by Max on 02.01.2017.
+ * Created by Felix on 02.01.2017.
  */
+
 public class UserData {
-    String username;
+    public String username;
     public class birthdate {
         int day, month, year;
     }
-    int userID;
-    int challengesCompleted;
-    int reputation;
+    public String profilePic;
+    public int challengesCompleted;
+    public int challengeAssigned;
+
+    protected int reputation;
+    protected int userID;
 }
