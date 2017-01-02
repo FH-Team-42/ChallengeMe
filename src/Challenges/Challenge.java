@@ -11,5 +11,5 @@ public class Challenge {
     Time CompletionTime;
     int idCreator;
     int idChallenge;
-    int id
+    int idChallenger;
 }
