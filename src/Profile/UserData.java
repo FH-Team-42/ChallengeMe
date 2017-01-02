@@ -7,18 +7,18 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 
 public class UserData {
-    public String username;
+    String username;
 
-    public class birthdate {
+    class birthdate {
         int day, month, year;
     }
 
-    public String profilePic;
-    public int challengesCompleted;
-    public int challengeAssigned;
+    String profilePic;
+    int challengesCompleted;
+    int challengeAssigned;
 
-    protected int reputation;
-    protected int userID;
+    int reputation;
+    int userID;
 
     private int getNewChallenge(UserData user) {
         int newID;
@@ -31,7 +31,7 @@ public class UserData {
             // nextInt is normally exclusive of the top value,
             // so add 1 to make it inclusive
             newID = ThreadLocalRandom.current().nextInt(min, max + 1);
-            challengeRemoveFromDatabase(newID);                 //will be added to control unit
+            //challengeRemoveFromDatabase(newID);                 //will be added to control unit
             return newID;
         } else {
             //user already has a challenge assigned, return a nope
@@ -41,7 +41,7 @@ public class UserData {
 
     private int giveUp(UserData user) {
         if (user.challengeAssigned != 0) {
-            challengeAddToDatabase(user.challengeAssigned);     //will be added to control unit
+            //challengeAddToDatabase(user.challengeAssigned);     //will be added to control unit
             user.challengeAssigned = 0;
             return 1;
         } else {
