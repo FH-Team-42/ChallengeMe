@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5b8a5757-50b6-43b6-9b49-c5d6d460fbb2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Challenges/Challenge.java" afterPath="$PROJECT_DIR$/src/Challenges/Challenge.java" />
     </list>
     <ignored path="ChallengeMe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -717,7 +716,7 @@
       <workItem from="1483381318307" duration="145000" />
       <workItem from="1483381563322" duration="814000" />
       <workItem from="1483382441789" duration="817000" />
-      <workItem from="1483383848139" duration="2817000" />
+      <workItem from="1483383848139" duration="2828000" />
     </task>
     <task id="LOCAL-00001" summary="Edited Challenge.java">
       <created>1483382483422</created>
@@ -789,11 +788,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483386136184</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Functions for getting random Challenge and giving up">
+      <created>1483386682955</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1483386682955</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4916000" />
+    <option name="totallyTimeSpent" value="4927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
