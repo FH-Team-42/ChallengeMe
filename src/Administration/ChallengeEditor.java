@@ -5,5 +5,4 @@ package Administration;
  */
 public class ChallengeEditor {
 
-
 }
