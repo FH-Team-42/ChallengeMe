@@ -1,24 +1,22 @@
 package Profile;
-
-import java.util.concurrent.ThreadLocalRandom;
+import Administration.Randomizer;
 
 /**
  * Created by Felix on 02.01.2017.
  */
 
 public class UserData {
-    public String username;
+    String username;
+    String password;
+    int birthday;
+    int birthmonth;
+    int birthyear;
 
-    public class birthdate {
-        int day, month, year;
-    }
-
-    public String profilePic;
-    public int challengesCompleted;
-    public int challengeAssigned;
-
-    protected int reputation;
-    protected int userID;
+    String profilePic;
+    int challengesCompleted;
+    int challengeAssigned;
+    int reputation;
+    int userID;
 
     private int getNewChallenge(UserData user) {
         int newID;
@@ -28,10 +26,9 @@ public class UserData {
             //generate new challenge
             int min = minChallengeIndex;
             int max = maxChallengeIndex;
-            // nextInt is normally exclusive of the top value,
-            // so add 1 to make it inclusive
-            newID = ThreadLocalRandom.current().nextInt(min, max + 1);
-            challengeRemoveFromDatabase(newID);                 //will be added to control unit
+            // add 1 to max because max is exclusive
+            newID = Randomizer.getRandomInt(min, max);
+            //challengeRemoveFromDatabase(newID);                 //will be added to control unit
             return newID;
         } else {
             //user already has a challenge assigned, return a nope
@@ -41,7 +38,7 @@ public class UserData {
 
     private int giveUp(UserData user) {
         if (user.challengeAssigned != 0) {
-            challengeAddToDatabase(user.challengeAssigned);     //will be added to control unit
+            //challengeAddToDatabase(user.challengeAssigned);     //will be added to control unit
             user.challengeAssigned = 0;
             return 1;
         } else {
