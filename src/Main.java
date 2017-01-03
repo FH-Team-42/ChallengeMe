@@ -7,6 +7,10 @@ import java.util.Random;
 
 import java.io.*;
 
+/**
+ * Created by Felix on 02.01.2017.
+ */
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,6 +18,9 @@ public class Main {
         int counter = 1;
         int TESTS = 299;
         int error = 0;
+        int fillIndex = 0;
+
+
 
         while (counter <= TESTS) {
             System.out.println("Starting test " + Integer.toString(counter) + "...");
@@ -57,6 +64,9 @@ public class Main {
                 System.out.println("Year not matching.");
                 error++;
             }
+            System.out.println("Adding challenge to user...");
+            Challenge challenge = new Challenge();
+            challengeArray.addChallenge(challenge);
             counter++;
         }
         System.out.println("TESTS COMPLETED. Out of "
