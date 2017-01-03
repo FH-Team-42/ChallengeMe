@@ -14,11 +14,11 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-        //UNIT TEST
+        /* unit test */
         int counter = 1;
-        int TESTS = 300;
+        int TESTS = 20;
         int error = 0;
-        int fillIndex = counter;
+        int fillIndex = counter - 1;
 
         allChallenges challengeArray = new allChallenges();
 
@@ -70,7 +70,7 @@ public class Main {
             counter++;
         }
         counter--;
-
+        System.out.println("---GENERATED ARRAY---");
         while (fillIndex < TESTS) {
             System.out.println("Array Index " + Integer.toString(fillIndex) +
                     ": " + challengeArray.getArrayIndex(fillIndex));
