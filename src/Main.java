@@ -16,11 +16,11 @@ public class Main {
     public static void main(String[] args) {
         //UNIT TEST
         int counter = 1;
-        int TESTS = 299;
+        int TESTS = 300;
         int error = 0;
-        int fillIndex = 0;
+        int fillIndex = counter;
 
-
+        allChallenges challengeArray = new allChallenges();
 
         while (counter <= TESTS) {
             System.out.println("Starting test " + Integer.toString(counter) + "...");
@@ -68,6 +68,13 @@ public class Main {
             Challenge challenge = new Challenge();
             challengeArray.addChallenge(challenge);
             counter++;
+        }
+        counter--;
+
+        while (fillIndex < TESTS) {
+            System.out.println("Array Index " + Integer.toString(fillIndex) +
+                    ": " + challengeArray.getArrayIndex(fillIndex));
+            fillIndex++;
         }
         System.out.println("TESTS COMPLETED. Out of "
                 + Integer.toString(counter) + " tests, there were " + Integer.toString(error)

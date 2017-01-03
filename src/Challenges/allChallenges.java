@@ -11,9 +11,12 @@ public class allChallenges {
 
     }
 
+    public Challenge getArrayIndex(int index) {
+        return allChallenges[index];
+    }
     public void addChallenge(Challenge newChallenge) {
         int nextChallenge = 0;
-        while (allChallenges[nextChallenge] == null) {
+        while (allChallenges[nextChallenge] != null) {
             nextChallenge++;
         }
         allChallenges[nextChallenge] = newChallenge;
