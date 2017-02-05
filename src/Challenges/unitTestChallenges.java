@@ -38,18 +38,6 @@ public class unitTestChallenges extends TestCase{
 
     @Test
     /*
-    This Method tests if there occurred any errors while creating a challenge.
-     */
-    public void testTheChallenge(){
-        System.out.println("Testing the assignment of the attributes of challenge");
-        assertEquals(challengeName, testChallenge.getTitle());
-        assertEquals(challengeDescription, testChallenge.getDescription());
-        assertEquals(challengeTime, testChallenge.getCompletionTime());
-        assertEquals(testUserCreator.getUserID(), testChallenge.getCreatorId());
-    }
-
-    @Test
-    /*
     A test for checking if a user can be assigned a challenge and if it is registered right in the challenge itself.
      */
     public void testChallengeAssignmentToUser(){
@@ -60,12 +48,31 @@ public class unitTestChallenges extends TestCase{
 
     @Test
     /*
-    This tests the increment/decrement of a user
+    This tests the increment/decrement of the reputation of the challenge.
      */
     public void testUserVoting(){
+        System.out.println("Testing of user voting");
         int oldVote = testChallenge.getVote();
-        testChallenge.userVote();
+        System.out.println("Old vote: "+ testChallenge.getVote());
+        testChallenge.userVote(1);
+        System.out.println("New vote: "+ testChallenge.getVote());
         oldVote++;
         assertEquals(testChallenge.getVote(), oldVote);
+        testChallenge.userVote(-1);
+        System.out.println("New decrement vote: "+ testChallenge.getVote());
+        oldVote--;
+        assertEquals(testChallenge.getVote(), oldVote);
+    }
+
+    @Test
+    /*
+    This Method tests if there occurred any errors while creating a challenge.
+     */
+    public void testTheChallenge(){
+        System.out.println("Testing the assignment of the attributes of challenge");
+        assertEquals(challengeName, testChallenge.getTitle());
+        assertEquals(challengeDescription, testChallenge.getDescription());
+        assertEquals(challengeTime, testChallenge.getCompletionTime());
+        assertEquals(testUserCreator.getUserID(), testChallenge.getCreatorId());
     }
 }

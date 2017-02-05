@@ -91,7 +91,7 @@ public class Challenge {
         idChallenged = setChallengedId;
     }
 
-    public void userVote(){
-        vote++;
+    public void userVote(int value) {
+        vote += value;
     }
 }
