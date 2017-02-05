@@ -1,6 +1,7 @@
 package Challenges;
 
 import Profile.UserData;
+import static org.junit.Assert.assertEquals;
 import junit.framework.*;
 import org.junit.*;
 import org.junit.Test;
@@ -9,11 +10,26 @@ import org.junit.Test;
  * Created by Max on 05.02.2017.
  */
 public class unitTestChallenges {
-    @Test
+
+    UserData testUser;
+    Challenge testChallenge;
+    String challengeName = "test";
+    String challengeDescription = "du musst das und das machen.";
+    int challengeTime = 350;
+    String userName = "Max";
+    String userPassword = "passWort";
+    int userBirthday = 29;
+    int userBirthmonth = 03;
+    int userBirthyear = 1995;
+
     protected void setUp()
     {
-        UserData testUser = new UserData();
-        Challenge testChallenge = new Challenge("test", "du musst das und das machen.", 350, 1);
+        testUser = new UserData(userName, userPassword, userBirthday, userBirthmonth, userBirthyear);
+        testChallenge = new Challenge(challengeName, challengeDescription, challengeTime, testUser.getUserID());
+    }
 
+    @Test
+    protected void testTheChallenge(){
+        assertEquals(userName, testUser.getName());
     }
 }

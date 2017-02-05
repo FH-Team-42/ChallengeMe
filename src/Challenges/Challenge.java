@@ -37,7 +37,7 @@ public class Challenge {
         return description;
     }
     public int CompletionTime(){
-        return CompletionTime;
+        return completionTime;
     }
 
     public int getCreatorId(){
@@ -60,7 +60,7 @@ public class Challenge {
         description = setDescription;
     }
     public void setCompletionTime(int setCompletionTime) {
-        CompletionTime = setCompletionTime;
+        completionTime = setCompletionTime;
     }
     public void setCreatorId(int setCreatorId) {
         idCreator = setCreatorId;
