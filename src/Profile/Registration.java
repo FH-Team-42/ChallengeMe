@@ -8,12 +8,7 @@ import java.io.PrintWriter;
  */
 public class Registration {
     public static UserData register(String name, String password, int day, int month, int year) {
-        UserData user = new UserData();
-        user.setName(user, name);
-        user.setDay(user, day);
-        user.setMonth(user, month);
-        user.setyear(user, year);
-        user.setPass(user, password);
+        UserData user = new UserData(name, password, day, month, year);
 
         /* get next free id from database */
 

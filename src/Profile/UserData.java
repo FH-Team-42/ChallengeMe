@@ -17,6 +17,8 @@ public class UserData {
     private int reputation;
     private int userID;
 
+    private int IDCount = 0;
+
     public UserData(String name, String pass, int day, int month, int year) {
         username = name;
         password = pass;
@@ -24,6 +26,7 @@ public class UserData {
         birthmonth = month;
         birthyear = year;
         profilePic = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
+        userID = generateUserID();
         challengesCompleted = 0;
         challengeAssigned = 0;
         reputation = 0;
@@ -59,33 +62,53 @@ public class UserData {
         }
     }
 
-    public String getName(UserData user) {
-        return user.username;
+    private int generateUserID() {
+        int ID = IDCount;
+        IDCount++;
+        return ID;
     }
 
-    public String getPass(UserData user) {
-        return user.password;
+    public String getName() {
+        return username;
     }
 
-    public String getDay(UserData user) {
-        return Integer.toString(user.birthday);
+    public String getPass() {
+        return password;
     }
 
-    public String getMonth(UserData user) {
-        return Integer.toString(user.birthmonth);
+    public String getDay() {
+        return Integer.toString(birthday);
     }
 
-    public String getYear(UserData user) {
-        return Integer.toString(user.birthyear);
+    public String getMonth() {
+        return Integer.toString(birthmonth);
     }
 
-    public void setName(UserData user, String name) { user.username = name; }
+    public String getYear() {
+        return Integer.toString(birthyear);
+    }
 
-    public void setPass(UserData user, String pass) { user.password = pass; }
+    public int getUserID() {
+        return userID;
+    }
 
-    public void setDay(UserData user, int day) { user.birthday = day; }
+    public void setName(String name) {
+        username = name;
+    }
 
-    public void setMonth(UserData user, int month) { user.birthmonth = month; }
+    public void setPass(String pass) {
+        password = pass;
+    }
 
-    public void setyear(UserData user, int year) { user.birthyear = year; }
+    public void setDay(int day) {
+        birthday = day;
+    }
+
+    public void setMonth(int month) {
+        birthmonth = month;
+    }
+
+    public void setyear(int year) {
+        birthyear = year;
+    }
 }

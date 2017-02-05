@@ -34,31 +34,31 @@ public class Main {
             int mon = Integer.parseInt(Tmon);
             int year = Integer.parseInt(Tyear);
             UserData user = Registration.register(name, pass, day, mon, year);
-            if (name.equals(user.getName(user))) {
+            if (name.equals(user.getName())) {
                 System.out.println("Name matched.");
             } else {
                 System.out.println("Name not matching.");
                 error++;
             }
-            if (pass.equals(user.getPass(user))) {
+            if (pass.equals(user.getPass())) {
                 System.out.println("Password matched.");
             } else {
                 System.out.println("Password not matching.");
                 error++;
             }
-            if (Tday.equals(user.getDay(user))) {
+            if (Tday.equals(user.getDay())) {
                 System.out.println("Day matched.");
             } else {
                 System.out.println("Day not matching.");
                 error++;
             }
-            if (Tmon.equals(user.getMonth(user))) {
+            if (Tmon.equals(user.getMonth())) {
                 System.out.println("Month matched.");
             } else {
                 System.out.println("Month not matching.");
                 error++;
             }
-            if (Tyear.equals(user.getYear(user))) {
+            if (Tyear.equals(user.getYear())) {
                 System.out.println("Year matched.");
             } else {
                 System.out.println("Year not matching.");
