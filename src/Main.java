@@ -1,11 +1,12 @@
 import Challenges.Challenge;
 import Challenges.allChallenges;
 import Profile.Registration;
+import Profile.UnitTestsProfile;
 import Profile.UserData;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Random;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 /**
  * Created by Felix on 02.01.2017.
@@ -14,9 +15,9 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-
-        Profile.Registration.createWriter();
-
-
+        Result result = JUnitCore.runClasses(UnitTestsProfile.class);
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
     }
 }
