@@ -1,6 +1,10 @@
 package Challenges;
 
 
+import Administration.timerListener;
+
+import javax.swing.*;
+
 public class Challenge {
 
     private String title;
@@ -23,6 +27,12 @@ public class Challenge {
         idChallenge = getNewChallengeID();
         idChallenged = 0;
         vote = 0;
+    }
+
+    public void startChallenge(){
+        timerListener listener = new timerListener(completionTime);
+        Timer timer = new Timer(1000, listener);
+        timer.start();
     }
 
     public int getNewChallengeID(){
@@ -53,6 +63,15 @@ public class Challenge {
     public int getVote() {
         return vote;
     }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public int getCompletionTime(){
+        return completionTime;
+    }
+
     public void setTitle(String setTitle) {
         title = setTitle;
     }
@@ -72,7 +91,7 @@ public class Challenge {
         idChallenged = setChallengedId;
     }
 
-    public void userVote(int newVote){
-        vote += newVote;
+    public void userVote(){
+        vote++;
     }
 }

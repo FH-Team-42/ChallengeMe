@@ -17,7 +17,7 @@ public class UserData {
     private int reputation;
     private int userID;
 
-    private int IDCount = 0;
+    public static int IDCount = 0;
 
     public UserData(String name, String pass, int day, int month, int year) {
         username = name;
@@ -29,7 +29,7 @@ public class UserData {
         userID = generateUserID();
         challengesCompleted = 0;
         challengeAssigned = 0;
-        reputation = 0;
+        reputation = 100;
     }
 
     public int getNewChallenge(UserData user) {
@@ -61,11 +61,8 @@ public class UserData {
             return 0;
         }
     }
-
     private int generateUserID() {
-        int ID = IDCount;
-        IDCount++;
-        return ID;
+        return IDCount++;
     }
 
     public String getName() {
