@@ -1,4 +1,5 @@
 package Profile;
+import Administration.Randomizer;
 
 /**
  * Created by Felix on 02.01.2017.
@@ -16,18 +17,6 @@ public class UserData {
     private int challengeAssigned;
     private int reputation;
     private int userID;
-
-    public UserData(String name, String pass, int day, int month, int year) {
-        username = name;
-        password = pass;
-        birthday = day;
-        birthmonth = month;
-        birthyear = year;
-        profilePic = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
-        challengesCompleted = 0;
-        challengeAssigned = 0;
-        reputation = 0;
-    }
 
     public int getNewChallenge(UserData user) {
         int newID;
@@ -79,13 +68,5 @@ public class UserData {
         return Integer.toString(user.birthyear);
     }
 
-    public void setName(UserData user, String name) { user.username = name; }
 
-    public void setPass(UserData user, String pass) { user.password = pass; }
-
-    public void setDay(UserData user, int day) { user.birthday = day; }
-
-    public void setMonth(UserData user, int month) { user.birthmonth = month; }
-
-    public void setyear(UserData user, int year) { user.birthyear = year; }
 }
