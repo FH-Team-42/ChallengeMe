@@ -5,7 +5,7 @@ public class Challenge {
 
     private String title;
     private String description;
-    private int CompletionTime;
+    private int completionTime;
     private int idCreator;
     private int idChallenge;
     private int idChallenged;
@@ -13,6 +13,21 @@ public class Challenge {
 
     public Challenge(){
         vote=0;
+    }
+
+    public Challenge(String title, String description, int completionTime, int idCreator){
+        this.title = title;
+        this.description = description;
+        this.completionTime = completionTime;
+        this.idCreator = idCreator;
+        idChallenge = getNewChallengeID();
+        idChallenged = 0;
+        vote = 0;
+    }
+
+    public int getNewChallengeID(){
+        int NextFreeIDFromDatabase = 0;
+        return NextFreeIDFromDatabase;
     }
 
     public String getTitle(){
