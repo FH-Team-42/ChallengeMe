@@ -1,1 +1,3 @@
 workspace.xml
+out/*
+*.class
