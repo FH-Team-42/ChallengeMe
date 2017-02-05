@@ -6,17 +6,17 @@ import Administration.Randomizer;
  */
 
 public class UserData {
-    String username;
-    String password;
-    int birthday;
-    int birthmonth;
-    int birthyear;
+    private String username;
+    private String password;
+    private int birthday;
+    private int birthmonth;
+    private int birthyear;
 
-    String profilePic;
-    int challengesCompleted;
-    int challengeAssigned;
-    int reputation;
-    int userID;
+    private String profilePic;
+    private int challengesCompleted;
+    private int challengeAssigned;
+    private int reputation;
+    private int userID;
 
     public int getNewChallenge(UserData user) {
         int newID;
