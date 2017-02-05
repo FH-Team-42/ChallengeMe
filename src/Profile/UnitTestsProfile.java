@@ -45,8 +45,8 @@ public class UnitTestsProfile extends TestCase {
         writer.println(userBirthyearChallenged);
         writer.close();
     }
-
-    private void database_load(String aFileName) {
+/*
+    private String[] database_load(String aFileName) {
         Path path = Paths.get(aFileName);
         return Files.readAllLines(path, ENCODING);
     }
@@ -57,11 +57,13 @@ public class UnitTestsProfile extends TestCase {
         testUserChallenged = new UserData(userNameChallenged, userPasswordChallenged, userBirthdayChallenged, userBirthmonthChallenged, userBirthyearChallenged);
         testChallenge = new Challenge(challengeName, challengeDescription, challengeTime, testUserCreator.getUserID());
     }
-
+*/
     /* Test for database integrity */
+    /*
     @Test public void testDatabaseIntegrity() {
         PrintWriter writer = Registration.createWriter();
         database_write(writer);
         database_load("database.txt");
     }
+    */
 }
