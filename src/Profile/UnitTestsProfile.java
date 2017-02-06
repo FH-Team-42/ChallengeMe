@@ -32,6 +32,8 @@ public class UnitTestsProfile extends TestCase {
     private int userBirthyearChallenged = 1996;
 
     private void database_write(PrintWriter writer, String[][] array) {
+        System.out.println("Generating...");
+        System.out.println("Saving to file...");
         writer.println(userNameC);
         array[0][0] = userNameC;
         writer.println(userPasswordC);
@@ -56,6 +58,7 @@ public class UnitTestsProfile extends TestCase {
     }
 
     private void database_load(String aFileName, String[][] array) {
+        System.out.println("Loading from file...");
         BufferedReader buffer = null;
         try {
             buffer = new BufferedReader(new FileReader(aFileName));
@@ -83,14 +86,17 @@ public class UnitTestsProfile extends TestCase {
     /* Test for database integrity */
 
     @Test public void testDatabaseIntegrity() {
+        System.out.println("Testing database integrity...");
         String[][] array0 = new String[2][5];
         String[][] array1 = new String[2][5];
         Registration register = new Registration();
         PrintWriter writer = register.createWriter();
         database_write(writer, array0);
         database_load("database.txt", array1);
+        System.out.println("Testing...");
         for (int i = 0; i < 1; i++) {
             for (int k = 0; k < 5; k++) {
+                System.out.println("Array0[" + Integer.toString(i) + "][" + Integer.toString(k) + "] matched Array1[" + Integer.toString(i) + "][" + Integer.toString(k) + "]");
                 assertEquals(array0[i][k], array1[i][k]);
             }
         }

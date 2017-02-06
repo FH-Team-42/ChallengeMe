@@ -13,6 +13,13 @@ import org.junit.runner.notification.Failure;
 public class Main {
 
     public static void main(String[] args) {
+        Server server = new Server(56000);
+        server.start();
 
+        Client client = new Client("127.0.0.1", 56000, "TheCh4lleng3r");
+        client.start();
+
+        Client client2 = new Client("127.0.0.1", 56000, "Horst");
+        client2.start();
     }
 }
