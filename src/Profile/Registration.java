@@ -18,7 +18,7 @@ public class Registration {
         return user;
     }
 
-    public static PrintWriter createWriter() {
+    public PrintWriter createWriter() {
         PrintWriter writer = null;
         try {
             writer = new PrintWriter("database.txt", "UTF-8");
