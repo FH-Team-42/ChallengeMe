@@ -30,7 +30,7 @@ public class connectDataBase {
         try
         {
             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/challenge_me;shutdown=true", "root", "" );
+                    "jdbc:mysql://localhost/challenge_me", "root", "" );
             Statement stmt = con.createStatement();
 
 
