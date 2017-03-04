@@ -21,20 +21,23 @@ public class Client  {
     private String server, username;
     private int port;
 
-    /*
-     *  Constructor called by console mode
-     *  server: the server address
-     *  port: the port number
-     *  username: the username
+    /**
+     * Starts a new client without GUI
+     * @param server The server IP
+     * @param port The Port to connect to
+     * @param username The username to display in chat
      */
     public Client(String server, int port, String username) {
         // which calls the common constructor with the GUI set to null
         this(server, port, username, null);
     }
 
-    /*
-     * Constructor call when used from a GUI
-     * in console mode the ClienGUI parameter is null
+    /**
+     * Starts a new server with GUI
+     * @param server The server IP
+     * @param port The Port to connect to
+     * @param username The username to display in chat
+     * @param cg If the server runs in GUI mode
      */
     Client(String server, int port, String username, ClientGUI cg) {
         this.server = server;
@@ -44,8 +47,9 @@ public class Client  {
         this.cg = cg;
     }
 
-    /*
-     * To start the dialog
+    /**
+     * Starts server communication
+     * @return If connection was successful
      */
     public boolean start() {
         // try to connect to the server
@@ -89,8 +93,9 @@ public class Client  {
         return true;
     }
 
-    /*
-     * To send a message to the console or the GUI
+    /**
+     * Sends a message to the local chat log
+     * @param msg The message string to display
      */
     private void display(String msg) {
         if(cg == null)
@@ -99,8 +104,9 @@ public class Client  {
             cg.append(msg + "\n");		// append to the ClientGUI JTextArea (or whatever)
     }
 
-    /*
-     * To send a message to the server
+    /**
+     * Sends a message to the server
+     * @param msg The message string to send
      */
     void sendMessage(ChatMessage msg) {
         try {
@@ -111,9 +117,8 @@ public class Client  {
         }
     }
 
-    /*
-     * When something goes wrong
-     * Close the Input/Output streams and disconnect not much to do in the catch clause
+    /**
+     * Disconnect from the server
      */
     private void disconnect() {
         try {
@@ -135,23 +140,6 @@ public class Client  {
 
     }
     /*
-     * To start the Client in console mode use one of the following command
-     * > java Client
-     * > java Client username
-     * > java Client username portNumber
-     * > java Client username portNumber serverAddress
-     * at the console prompt
-     * If the portNumber is not specified 1500 is used
-     * If the serverAddress is not specified "localHost" is used
-     * If the username is not specified "Anonymous" is used
-     * > java Client
-     * is equivalent to
-     * > java Client Anonymous 1500 localhost
-     * are eqquivalent
-     *
-     * In console mode, if an error occurs the program simply stops
-     * when a GUI id used, the GUI is informed of the disconnection
-     */
     public static void main(String[] args) {
         // default values
         int portNumber = 1500;
@@ -216,7 +204,7 @@ public class Client  {
         client.disconnect();
     }
 
-    /*
+
      * a class that waits for the message from the server and append them to the JTextArea
      * if we have a GUI or simply System.out.println() it in console mode
      */

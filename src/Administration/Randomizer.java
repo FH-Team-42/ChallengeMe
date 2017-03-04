@@ -10,6 +10,12 @@ public class Randomizer {
     public Randomizer(){
 
     }
+
+    /**
+     * Returns a random integer
+     * @param max Maximum integer
+     * @return The random integer
+     */
     public static int getRandomInt(int max) {
         Random random = new Random();
         return (random.nextInt(max-1))+1;

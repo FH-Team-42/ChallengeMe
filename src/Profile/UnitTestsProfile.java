@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 /**
  * Created by Felix on 05.02.2017.
  */
+
 public class UnitTestsProfile extends TestCase {
     private int userID = 0;
     private UserData testUserCreator;

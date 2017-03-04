@@ -23,9 +23,9 @@ public class Server {
     private boolean keepGoing;
 
 
-    /*
-     *  server constructor that receive the port to listen to for connection as parameter
-     *  in console
+    /**
+     * Initializes a new server object
+     * @param port The port the server listens to
      */
     public Server(int port) {
         this(port, null);
@@ -89,8 +89,9 @@ public class Server {
             display(msg);
         }
     }
-    /*
-     * For the GUI to stop the server
+
+    /**
+     * Stop the server
      */
     protected void stop() {
         keepGoing = false;
@@ -103,8 +104,10 @@ public class Server {
             // nothing I can really do
         }
     }
-    /*
-     * Display an event (not a message) to the console or the GUI
+
+    /**
+     * Display an object on console / GUI
+     * @param msg The object to display
      */
     private void display(String msg) {
         String time = sdf.format(new Date()) + " " + msg;
@@ -113,8 +116,10 @@ public class Server {
         else
             sg.appendEvent(time + "\n");
     }
-    /*
-     *  to broadcast a message to all Clients
+
+    /**
+     * Broadcasts a message to all connected clients
+     * @param message The message string to broadcast
      */
     private synchronized void broadcast(String message) {
         // add HH:mm:ss and \n to the message
