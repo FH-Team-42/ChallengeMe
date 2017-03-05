@@ -2,7 +2,7 @@ package Challenges;
 
 
 import Administration.timerListener;
-import Profile.Login;
+import Administration.connectDataBase;
 
 import javax.swing.*;
 
@@ -21,6 +21,7 @@ public class Challenge {
     }
 
     public Challenge(String title, String description, int completionTime, int idCreator){
+        connectDataBase database = new connectDataBase();
         this.title = title;
         this.description = description;
         this.completionTime = completionTime;
@@ -28,6 +29,9 @@ public class Challenge {
         idChallenge = getNewChallengeID();
         idChallenged = 0;
         vote = 0;
+        String insertString = "INSERT INTO challenges (ChallengeID, challenged, creator, title, description, completionTime, votes) VALUES("
+                + idChallenge + ", " + idChallenged + ", " + idCreator + ", '" + title + "', '" + description + "', " + completionTime + ", " + vote + ")";
+        database.insertQery(insertString);
     }
 
     public void startChallenge(){

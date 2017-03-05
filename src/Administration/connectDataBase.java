@@ -6,15 +6,10 @@ import java.sql.*;
  */
 public class connectDataBase {
 
-    private static final connectDataBase dbcontroller = new connectDataBase();
     private static Connection con;
+    private Statement stmt;
 
     public connectDataBase(){
-
-    }
-
-    public static void main( String[] args )
-    {
         try
         {
             Class.forName( "com.mysql.jdbc.Driver" );
@@ -23,7 +18,6 @@ public class connectDataBase {
         {
             System.err.println( "Keine Treiber-Klasse!" );
             System.err.println(e);
-            return;
         }
 
 
@@ -31,27 +25,41 @@ public class connectDataBase {
         {
             con = DriverManager.getConnection(
                     "jdbc:mysql://localhost/challenge_me", "root", "" );
-            Statement stmt = con.createStatement();
-
-
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM users" );
-
-            while ( rs.next() )
-                System.out.printf( "%s, %s %s%n", rs.getString(1),
-                        rs.getString(2), rs.getString(3) );
-
-            rs.close();
-
-            stmt.close();
+            stmt = con.createStatement();
         }
         catch ( SQLException e )
         {
             e.printStackTrace();
         }
+    }
+
+    public void insertQery(String query)
+    {
+        try {
+            stmt.executeUpdate(query);
+            stmt.close();
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        /*
         finally
         {
             if ( con != null )
                 try { con.close(); } catch ( SQLException e ) { e.printStackTrace(); }
+        }*/
+    }
+
+    public void disconnectDB(Statement stmt){
+        try{
+            con = stmt.getConnection();
+            stmt.close();
+            if(con != null){
+                con.close();
+            }
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
         }
     }
 
