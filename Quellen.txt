@@ -1,0 +1,3 @@
+http://www.torsten-horn.de/techdocs/java-sql.htm
+http://stackoverflow.com/questions/22367323/intellij-mysql-connector-driver-not-found-despite-being-loaded-as-a-library
+http://stackoverflow.com/questions/12472828/setup-initilize-junit-testing
