@@ -1,6 +1,7 @@
 package Profile;
 
 import Administration.connectDataBase;
+
 /**
  * Created by Felix on 02.01.2017.
  */
@@ -19,15 +20,15 @@ public class UserData {
     private int userID;
     private connectDataBase database;
 
-    public static int IDCount = 0;
 
     /**
      * Creates a new user object
-     * @param name The username
-     * @param pass The users password hash, encrypted with SHA-256
-     * @param day The users birthday
+     *
+     * @param name  The username
+     * @param pass  The users password hash, encrypted with SHA-256
+     * @param day   The users birthday
      * @param month The users birthmonth
-     * @param year The users birthyear
+     * @param year  The users birthyear
      */
     public UserData(String name, String pass, int day, int month, int year) {
         database = new connectDataBase();
@@ -37,18 +38,24 @@ public class UserData {
         birthmonth = month;
         birthyear = year;
         profilePic = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
-        userID = generateUserID();
         challengesCompleted = 0;
         challengeAssigned = 0;
         reputation = 100;
-        String insertString = "INSERT INTO users (userID, username, password, birthday, birthmonth, birthyear, profilepic, challengesCompleted, challengeAssinged, reputation) VALUES("
-                + userID + ", '" + username + "', '" + password + "', " + birthday + ", " + birthmonth + ", " + birthyear + ", '" + profilePic + "', "
-                + challengesCompleted + ", " + challengeAssigned + ", " + reputation + ")";
-        database.insertQery(insertString);
+        if (!database.dataBaseQueryString("SELECT * FROM users WHERE username='" + username + "'", "username").equals(username)) {
+            userID = generateUserID();
+            String insertString = "INSERT INTO users (userID, username, password, birthday, birthmonth, birthyear, profilepic, challengesCompleted, challengeAssinged, reputation) VALUES("
+                    + userID + ", '" + username + "', '" + password + "', " + birthday + ", " + birthmonth + ", " + birthyear + ", '" + profilePic + "', "
+                    + challengesCompleted + ", " + challengeAssigned + ", " + reputation + ")";
+            database.insertQery(insertString);
+        } else {
+            userID = database.dataBaseQueryInt("SELECT * FROM users WHERE username='" + username + "'", "userID");
+        }
+
     }
 
     /**
      * Assigns a new random challenge to a user
+     *
      * @param user The user requesting a challenge
      * @return Challenge ID assigned to user
      */
@@ -73,6 +80,7 @@ public class UserData {
 
     /**
      * Remove a challenge from a user
+     *
      * @param user The user giving up
      * @return If giving up was successful
      */
@@ -89,14 +97,19 @@ public class UserData {
 
     /**
      * Generates a user ID
+     *
      * @return The user ID
      */
     private int generateUserID() {
-        return IDCount++;
+        int nextFreeIDFromDatabase = 0;
+        String query = "SELECT * FROM users ORDER BY userID DESC";
+        nextFreeIDFromDatabase = database.searchLastIndex(query);
+        return nextFreeIDFromDatabase + 1;
     }
 
     /**
      * Returns the username
+     *
      * @return The username
      */
     public String getName() {
@@ -105,6 +118,7 @@ public class UserData {
 
     /**
      * Returns the user password
+     *
      * @return The users password
      */
     public String getPass() {
@@ -113,6 +127,7 @@ public class UserData {
 
     /**
      * Returns the users birthday
+     *
      * @return The users birthday
      */
     public String getDay() {
@@ -121,6 +136,7 @@ public class UserData {
 
     /**
      * Returns the users birthmonth
+     *
      * @return The users birthmonth
      */
     public String getMonth() {
@@ -129,6 +145,7 @@ public class UserData {
 
     /**
      * Returns the users birthyear
+     *
      * @return The users birthyear
      */
     public String getYear() {
@@ -137,6 +154,7 @@ public class UserData {
 
     /**
      * Returns the users ID
+     *
      * @return The users ID
      */
     public int getUserID() {
@@ -145,6 +163,7 @@ public class UserData {
 
     /**
      * Sets the users Name
+     *
      * @param name The username
      */
     public void setName(String name) {
@@ -153,6 +172,7 @@ public class UserData {
 
     /**
      * Sets the users Password
+     *
      * @param pass The password
      */
     public void setPass(String pass) {
@@ -161,12 +181,16 @@ public class UserData {
 
     /**
      * Sets the users birthday
+     *
      * @param day The users birthday
      */
-    public void setDay(int day) { birthday = day; }
+    public void setDay(int day) {
+        birthday = day;
+    }
 
     /**
      * Sets the users birth month
+     *
      * @param month The users birth month
      */
     public void setMonth(int month) {
@@ -175,6 +199,7 @@ public class UserData {
 
     /**
      * Sets the users birth year
+     *
      * @param year The users birth year
      */
     public void setyear(int year) {
