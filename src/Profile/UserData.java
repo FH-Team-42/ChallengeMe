@@ -47,7 +47,7 @@ public class UserData {
             String insertString = "INSERT INTO users (userID, username, password, birthday, birthmonth, birthyear, profilepic, challengesCompleted, challengeAssinged, reputation) VALUES("
                     + userID + ", '" + username + "', '" + password + "', " + birthday + ", " + birthmonth + ", " + birthyear + ", '" + profilePic + "', "
                     + challengesCompleted + ", " + challengeAssigned + ", " + reputation + ")";
-            database.insertQery(insertString);
+            database.insertQuery(insertString);
         } else {
             userID = database.dataBaseQueryInt("SELECT userID FROM users WHERE username='" + username + "'", "userID");
         }
@@ -67,8 +67,8 @@ public class UserData {
         if (challengeAssigned == 0) {
             //generate new challenge
             newID = Randomizer.getRandomInt(maxChallengeIndex);
-            database.insertQery("UPDATE users SET challengeAssinged=" + newID + " WHERE userID=" + userID);
-            database.insertQery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
+            database.insertQuery("UPDATE users SET challengeAssinged=" + newID + " WHERE userID=" + userID);
+            database.insertQuery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
             challengeAssigned = newID;
             return newID;
         } else {
@@ -168,7 +168,7 @@ public class UserData {
     public void setName(String name) {
         username = name;
         String query = "UPDATE users SET username='" + name +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 
     /**
@@ -179,7 +179,7 @@ public class UserData {
     public void setPass(String pass) {
         password = pass;
         String query = "UPDATE users SET password='" + pass +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 
     /**
@@ -190,7 +190,7 @@ public class UserData {
     public void setDay(int day) {
         birthday = day;
         String query = "UPDATE users SET birthday='" + day +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 
     /**
@@ -201,7 +201,7 @@ public class UserData {
     public void setMonth(int month) {
         birthmonth = month;
         String query = "UPDATE users SET birthmonth='" + month +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 
     /**
@@ -212,7 +212,7 @@ public class UserData {
     public void setYear(int year) {
         birthyear = year;
         String query = "UPDATE users SET birthyear='" + year +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 
     public void voteForUser(int vote){
@@ -220,6 +220,6 @@ public class UserData {
         int newVotes = database.dataBaseQueryInt("SELECT reputation FROM users WHERE userID=" +userID, "reputation");
         newVotes += vote;
         String query = "UPDATE users SET reputation='" + newVotes +  "' WHERE userID=" + userID;
-        database.insertQery(query);
+        database.insertQuery(query);
     }
 }

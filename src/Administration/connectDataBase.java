@@ -29,7 +29,7 @@ public class connectDataBase {
         }
     }
 
-    public void insertQery(String query) {
+    public void insertQuery(String query) {
         try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {

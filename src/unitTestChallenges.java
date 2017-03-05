@@ -48,7 +48,7 @@ public class unitTestChallenges extends TestCase {
         System.out.println("Tests if the assingment of a challenge to a user is working");
         int challengeID = testUserChallenged.setNewChallenge();
         testChallenge.setChallengedId(challengeID);
-        assertEquals(testChallenge.getChallengendId(), testUserChallenged.getUserID());
+        assertEquals(testChallenge.getChallengedId(), testUserChallenged.getUserID());
     }
 
     @Test

@@ -37,7 +37,7 @@ public class Challenge {
             idChallenge = getNewChallengeID();
             String insertString = "INSERT INTO challenges (ChallengeID, challenged, creator, title, description, completionTime, votes) VALUES("
                     + idChallenge + ", " + idChallenged + ", " + idCreator + ", '" + title + "', '" + description + "', " + completionTime + ", " + vote + ")";
-            database.insertQery(insertString);
+            database.insertQuery(insertString);
         }else{
             idChallenge = database.dataBaseQueryInt("SELECT * FROM challenges WHERE title='" + this.title + "'", "ChallengeID");
         }
@@ -161,6 +161,7 @@ public class Challenge {
      * @param setTitle The new title
      */
     public void setTitle(String setTitle) {
+        title = setTitle;
     	String query = "UPDATE challenges SET title=" + setTitle + " WHERE challengeID = " + idChallenge;
     	database.insertQuery(query);
     }
@@ -171,6 +172,7 @@ public class Challenge {
      * @param setDescription The new description
      */
     public void setDescription(String setDescription) {
+        description = setDescription;
     	String query = "UPDATE challenges SET description=" + setDescription + " WHERE challengeID = " + idChallenge;
     	database.insertQuery(query);
     }
@@ -181,6 +183,7 @@ public class Challenge {
      * @param setCompletionTime The new completion time in seconds
      */
     public void setCompletionTime(int setCompletionTime) {
+        completionTime = setCompletionTime;
     	String query = "UPDATE challenges SET completionTime=" + setCompletionTime + " WHERE challengeID = " + idChallenge;
     	database.insertQuery(query);
     }
@@ -210,6 +213,7 @@ public class Challenge {
      * @param setChallengedId The challenged user's ID
      */
     public void setChallengedId(int setChallengedId) {
+        idChallenged = setChallengedId;
     	String query = "UPDATE challenges SET challenged=" + setChallengedId + " WHERE challengeID = " + idChallenge;
     	database.insertQuery(query);
     }
@@ -220,7 +224,7 @@ public class Challenge {
      * @param value The value to add (1 for positive, -1 for negative vote)
      */
     public void userVote(int value) {
-    	
+    	vote += value;
     	int challengeUserVote;
     	String abfrageColumn = "completionTime";
     	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
@@ -231,4 +235,3 @@ public class Challenge {
     	database.insertQuery(query2);
     }
 }
-a
