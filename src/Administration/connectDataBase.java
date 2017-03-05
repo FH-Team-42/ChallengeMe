@@ -35,12 +35,6 @@ public class connectDataBase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        /*
-        finally
-        {
-            if ( con != null )
-                try { con.close(); } catch ( SQLException e ) { e.printStackTrace(); }
-        }*/
     }
 
     public int searchLastIndex(String query) {

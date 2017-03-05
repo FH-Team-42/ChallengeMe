@@ -18,7 +18,7 @@ public class Randomizer {
      */
     public static int getRandomInt(int max) {
         Random random = new Random();
-        return (random.nextInt(max-1))+1;
+        return (random.nextInt(max));
     }
 }
 
