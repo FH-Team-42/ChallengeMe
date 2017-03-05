@@ -14,16 +14,16 @@ public class UserData {
     private int birthmonth;
     private int birthyear;
 
-    private String profilePic;
-    private int challengesCompleted;
-    private int challengeAssigned;
+    private String profilePic;          //link to profile pic
+    private int challengesCompleted;    //count of the challenges the user hat completed
+    private int challengeAssigned;      //ID of the assigned challenge
     private int reputation;
-    private int userID;
-    private connectDataBase database;
+    private int userID;                 //UserID in database
+    private connectDataBase database;   //connection to the database
 
 
     /**
-     * Creates a new user object
+     * Creates a new user object and writes it into the database if it is not there yet
      *
      * @param name  The username
      * @param pass  The users password hash, encrypted with SHA-256
@@ -63,10 +63,9 @@ public class UserData {
     public int setNewChallenge() {
         int newID;
         int maxChallengeIndex = database.searchLastIndex("SELECT challengeID FROM challenges ORDER BY challengeID DESC");
-        System.out.println(maxChallengeIndex);
         if (challengeAssigned == 0) {
             //generate new challenge
-            newID = Randomizer.getRandomInt(maxChallengeIndex);
+            newID = Randomizer.getRandomInt(maxChallengeIndex)+1;
             database.insertQuery("UPDATE users SET challengeAssinged=" + newID + " WHERE userID=" + userID);
             database.insertQuery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
             challengeAssigned = newID;
@@ -112,7 +111,9 @@ public class UserData {
      * @return The username
      */
     public String getName() {
-        return username;
+        String abfrageColumn = "username";
+        String query = "SELECT username From users WHERE userID = " + userID;
+        return database.dataBaseQueryString(query, abfrageColumn);
     }
 
     /**
@@ -121,7 +122,9 @@ public class UserData {
      * @return The users password
      */
     public String getPass() {
-        return password;
+        String abfrageColumn = "password";
+        String query = "SELECT password From users WHERE userID = " + userID;
+        return database.dataBaseQueryString(query, abfrageColumn);
     }
 
     /**
@@ -129,8 +132,10 @@ public class UserData {
      *
      * @return The users birthday
      */
-    public String getDay() {
-        return Integer.toString(birthday);
+    public int getDay() {
+        String abfrageColumn = "birthday";
+        String query = "SELECT birthday From users WHERE userID = " + userID;
+        return database.dataBaseQueryInt(query, abfrageColumn);
     }
 
     /**
@@ -138,8 +143,10 @@ public class UserData {
      *
      * @return The users birthmonth
      */
-    public String getMonth() {
-        return Integer.toString(birthmonth);
+    public int getMonth() {
+        String abfrageColumn = "birthmonth";
+        String query = "SELECT birthmonth From users WHERE userID = " + userID;
+        return database.dataBaseQueryInt(query, abfrageColumn);
     }
 
     /**
@@ -147,8 +154,10 @@ public class UserData {
      *
      * @return The users birthyear
      */
-    public String getYear() {
-        return Integer.toString(birthyear);
+    public int getYear() {
+        String abfrageColumn = "birthyear";
+        String query = "SELECT birthyear From users WHERE userID = " + userID;
+        return database.dataBaseQueryInt(query, abfrageColumn);
     }
 
     /**
@@ -157,7 +166,20 @@ public class UserData {
      * @return The users ID
      */
     public int getUserID() {
-        return userID;
+        String abfrageColumn = "userID";
+        String query = "SELECT userID From users WHERE username = '" + username + "'";
+        return database.dataBaseQueryInt(query, abfrageColumn);
+    }
+
+    /**
+     * Returns the users reputation
+     *
+     * @return The users reputation
+     */
+    public int getReputation() {
+        String abfrageColumn = "reputation";
+        String query = "SELECT reputation From users WHERE userID = " + userID;
+        return database.dataBaseQueryInt(query, abfrageColumn);
     }
 
     /**
@@ -221,5 +243,12 @@ public class UserData {
         newVotes += vote;
         String query = "UPDATE users SET reputation='" + newVotes +  "' WHERE userID=" + userID;
         database.insertQuery(query);
+    }
+
+    /**
+     * Disconnect from database
+     */
+    public void disconnectDB(){
+        database.disconnectDB();
     }
 }

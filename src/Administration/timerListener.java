@@ -16,6 +16,9 @@ public class timerListener implements ActionListener {
     }
 
     @Override
+    /*
+    This should start the countdown and count down 1 every second
+     */
     public void actionPerformed(ActionEvent e) {
 
         challengeCompletionTime--;

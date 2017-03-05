@@ -8,18 +8,17 @@ import javax.swing.*;
 
 public class Challenge {
 
-    private String title;
-    private String description;
-    private int completionTime;
-    private int idCreator;
-    private int idChallenge;
-    private int idChallenged;
-    private int vote;
-    connectDataBase database = new connectDataBase();
-    ;
+    private String title;       //title of the challenge
+    private String description; //description of the challenge
+    private int completionTime; //time to complete challenge
+    private int idCreator;      //ID of challenge creator in database
+    private int idChallenge;    //ID of challenge in database
+    private int idChallenged;   //ID of the user which is assigned this challenge
+    private int vote;           //votes of the challenge, delete challenges with too much negative votes
+    connectDataBase database = new connectDataBase(); //connection to the database
 
     /**
-     * Creates a new challenge and inserts it into the database
+     * Creates a new challenge and inserts it into the database if it is not part of it yet.
      *
      * @param title          The title of the challenge
      * @param description    The challenge description
@@ -188,25 +187,6 @@ public class Challenge {
     	database.insertQuery(query);
     }
 
-    /*
-     * Set the challenge's creator ID
-     *
-     * @param setCreatorId The challenge creator's user ID
-     *
-    public void setCreatorId(int setCreatorId) {
-        idCreator = setCreatorId;
-    }
-
-     *
-     * Set the challenge ID
-     *
-     * @param setChallengeId The new challenge ID
-     *
-    
-    public void setChallengeId(int setChallengeId) {
-        idChallenge = setChallengeId;
-    }*/
-
     /**
      * Set the challenged user's ID
      *
@@ -220,18 +200,26 @@ public class Challenge {
 
     /**
      * Vote the challenge
+     * First catches the old vote from the database and then writes the new value into it
      *
      * @param value The value to add (1 for positive, -1 for negative vote)
      */
     public void userVote(int value) {
     	vote += value;
     	int challengeUserVote;
-    	String abfrageColumn = "completionTime";
+    	String abfrageColumn = "votes";
     	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
     	challengeUserVote = database.dataBaseQueryInt(query, abfrageColumn);
     	challengeUserVote += value;
     	
     	String query2 = "UPDATE challenges SET votes=" + challengeUserVote + " WHERE challengeID = " + idChallenge;
     	database.insertQuery(query2);
+    }
+
+    /**
+     * Disconnect the database
+     */
+    public void disconnectDB(){
+        database.disconnectDB();
     }
 }
