@@ -70,7 +70,11 @@ public class Challenge {
      * @return The title of the challenge
      */
     public String getTitle() {
-        return title;
+    	String challengeTitle;
+    	String abfragColumn = "title";
+    	String query = "SELECT * FROM challenges WHERE challengeID = " + idChallenge;
+    	challengeTitle = database.dataBaseQueryString(query, abfragColumn); 
+    	return challengeTitle;
     }
 
     /**
@@ -79,7 +83,11 @@ public class Challenge {
      * @return The description of the challenge
      */
     public String getDescription() {
-        return description;
+    	String challengeDescription;
+    	String abfrageColumn = "description";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeDescription = database.dataBaseQueryString(query, abfrageColumn);
+        return challengeDescription;
     }
 
     /**
@@ -88,7 +96,11 @@ public class Challenge {
      * @return The challenge creator's ID
      */
     public int getCreatorId() {
-        return idCreator;
+    	int challengeCreatorID;
+    	String abfrageColumn = "creator";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeCreatorID = database.dataBaseQueryInt(query, abfrageColumn);
+        return challengeCreatorID;
     }
 
     /**
@@ -97,7 +109,11 @@ public class Challenge {
      * @return The challenge's ID
      */
     public int getChallengeId() {
-        return idChallenge;
+    	int challengeChallengeID;
+    	String abfrageColumn = "ChallengeID";
+    	String query = "SELECT * From challenges WHERE title = " + title;
+    	challengeChallengeID = database.dataBaseQueryInt(query, abfrageColumn);
+        return challengeChallengeID;
     }
 
     /**
@@ -105,8 +121,12 @@ public class Challenge {
      *
      * @return The challenged person's user ID
      */
-    public int getChallengendId() {
-        return idChallenged;
+    public int getChallengedId() {
+    	int challengeChallengedID;
+    	String abfrageColumn = "challenged";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeChallengedID = database.dataBaseQueryInt(query, abfrageColumn);
+        return challengeChallengedID;
     }
 
     /**
@@ -115,7 +135,11 @@ public class Challenge {
      * @return The current voting of the challenge
      */
     public int getVote() {
-        return vote;
+    	int challengeVote;
+    	String abfrageColumn = "votes";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeVote = database.dataBaseQueryInt(query, abfrageColumn);
+        return challengeVote;
     }
 
     /**
@@ -124,7 +148,11 @@ public class Challenge {
      * @return The remaining completion time
      */
     public int getCompletionTime() {
-        return completionTime;
+    	int challengeCompletionTime;
+    	String abfrageColumn = "completionTime";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeCompletionTime = database.dataBaseQueryInt(query, abfrageColumn);
+        return challengeCompletionTime;
     }
 
     /**
@@ -133,7 +161,8 @@ public class Challenge {
      * @param setTitle The new title
      */
     public void setTitle(String setTitle) {
-        title = setTitle;
+    	String query = "UPDATE challenges SET title=" + setTitle + " WHERE challengeID = " + idChallenge;
+    	database.insertQuery(query);
     }
 
     /**
@@ -142,7 +171,8 @@ public class Challenge {
      * @param setDescription The new description
      */
     public void setDescription(String setDescription) {
-        description = setDescription;
+    	String query = "UPDATE challenges SET description=" + setDescription + " WHERE challengeID = " + idChallenge;
+    	database.insertQuery(query);
     }
 
     /**
@@ -151,26 +181,28 @@ public class Challenge {
      * @param setCompletionTime The new completion time in seconds
      */
     public void setCompletionTime(int setCompletionTime) {
-        completionTime = setCompletionTime;
+    	String query = "UPDATE challenges SET completionTime=" + setCompletionTime + " WHERE challengeID = " + idChallenge;
+    	database.insertQuery(query);
     }
 
-    /**
+    /*
      * Set the challenge's creator ID
      *
      * @param setCreatorId The challenge creator's user ID
-     */
+     *
     public void setCreatorId(int setCreatorId) {
         idCreator = setCreatorId;
     }
 
-    /**
+     *
      * Set the challenge ID
      *
      * @param setChallengeId The new challenge ID
-     */
+     *
+    
     public void setChallengeId(int setChallengeId) {
         idChallenge = setChallengeId;
-    }
+    }*/
 
     /**
      * Set the challenged user's ID
@@ -178,7 +210,8 @@ public class Challenge {
      * @param setChallengedId The challenged user's ID
      */
     public void setChallengedId(int setChallengedId) {
-        idChallenged = setChallengedId;
+    	String query = "UPDATE challenges SET challenged=" + setChallengedId + " WHERE challengeID = " + idChallenge;
+    	database.insertQuery(query);
     }
 
     /**
@@ -187,6 +220,15 @@ public class Challenge {
      * @param value The value to add (1 for positive, -1 for negative vote)
      */
     public void userVote(int value) {
-        vote += value;
+    	
+    	int challengeUserVote;
+    	String abfrageColumn = "completionTime";
+    	String query = "SELECT * From challenges WHERE challengeID = " + idChallenge;
+    	challengeUserVote = database.dataBaseQueryInt(query, abfrageColumn);
+    	challengeUserVote += value;
+    	
+    	String query2 = "UPDATE challenges SET votes=" + challengeUserVote + " WHERE challengeID = " + idChallenge;
+    	database.insertQuery(query2);
     }
 }
+a
