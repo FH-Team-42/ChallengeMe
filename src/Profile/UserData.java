@@ -1,5 +1,6 @@
 package Profile;
 
+import Administration.connectDataBase;
 /**
  * Created by Felix on 02.01.2017.
  */
@@ -16,6 +17,7 @@ public class UserData {
     private int challengeAssigned;
     private int reputation;
     private int userID;
+    private connectDataBase database;
 
     public static int IDCount = 0;
 
@@ -28,6 +30,7 @@ public class UserData {
      * @param year The users birthyear
      */
     public UserData(String name, String pass, int day, int month, int year) {
+        database = new connectDataBase();
         username = name;
         password = pass;
         birthday = day;
@@ -38,6 +41,10 @@ public class UserData {
         challengesCompleted = 0;
         challengeAssigned = 0;
         reputation = 100;
+        String insertString = "INSERT INTO users (userID, username, password, birthday, birthmonth, birthyear, profilepic, challengesCompleted, challengeAssinged, reputation) VALUES("
+                + userID + ", '" + username + "', '" + password + "', " + birthday + ", " + birthmonth + ", " + birthyear + ", '" + profilePic + "', "
+                + challengesCompleted + ", " + challengeAssigned + ", " + reputation + ")";
+        database.insertQery(insertString);
     }
 
     /**
