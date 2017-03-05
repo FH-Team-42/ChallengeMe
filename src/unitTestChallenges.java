@@ -1,6 +1,6 @@
-package Challenges;
 
 import Profile.UserData;
+import Challenges.Challenge;
 
 import static org.junit.Assert.assertEquals;
 
@@ -46,7 +46,8 @@ public class unitTestChallenges extends TestCase {
      */
     public void testChallengeAssignmentToUser() {
         System.out.println("Tests if the assingment of a challenge to a user is working");
-        testChallenge.setChallengedId(testUserChallenged.getUserID());
+        int challengeID = testUserChallenged.setNewChallenge();
+        testChallenge.setChallengedId(challengeID);
         assertEquals(testChallenge.getChallengendId(), testUserChallenged.getUserID());
     }
 
