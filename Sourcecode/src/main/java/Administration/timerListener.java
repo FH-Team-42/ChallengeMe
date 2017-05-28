@@ -1,4 +1,4 @@
-package src.Administration;
+package Administration;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,6 @@ public class timerListener implements ActionListener {
         challengeCompletionTime = completionTimeOfStartingChallenge;
     }
 
-    @Override
     /*
     This should start the countdown and count down 1 every second
      */

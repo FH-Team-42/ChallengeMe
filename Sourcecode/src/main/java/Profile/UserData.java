@@ -1,25 +1,50 @@
-package src.Profile;
+package Profile;
 
 import Administration.connectDataBase;
 import Administration.Randomizer;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Felix on 02.01.2017.
  */
 
+@Entity
 public class UserData {
-    private String username;
-    private String password;
-    private int birthday;
-    private int birthmonth;
-    private int birthyear;
 
+    @Column
+    private String username;
+
+    @Column
+    private String password;
+
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
+
+    @Column
     private String profilePic;          //link to profile pic
+
+    @Column
     private int challengesCompleted;    //count of the challenges the user hat completed
+
+    @Column
     private int challengeAssigned;      //ID of the assigned challenge
+
+    @Column
     private int reputation;
+
+    @Id
+    @GeneratedValue
     private int userID;                 //UserID in database
-    private connectDataBase database;   //connection to the database
+    //private connectDataBase database;   //connection to the database
+
+    @Version
+    private Long version;
+
+    public UserData(){
+
+    }
 
 
     /**
@@ -31,26 +56,24 @@ public class UserData {
      * @param month The users birthmonth
      * @param year  The users birthyear
      */
-    public UserData(String name, String pass, int day, int month, int year) {
-        database = new connectDataBase();
+    public UserData(String name, String pass, Date day, int month, int year) {
+        //database = new connectDataBase();
         username = name;
         password = pass;
         birthday = day;
-        birthmonth = month;
-        birthyear = year;
         profilePic = "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png";
         challengesCompleted = 0;
         challengeAssigned = 0;
         reputation = 100;
-        if (!database.dataBaseQueryString("SELECT username FROM users WHERE username='" + username + "'", "username").equals(username)) {
+        /*if (!database.dataBaseQueryString("SELECT username FROM users WHERE username='" + username + "'", "username").equals(username)) {
             userID = generateUserID();
             String insertString = "INSERT INTO users (userID, username, password, birthday, birthmonth, birthyear, profilepic, challengesCompleted, challengeAssinged, reputation) VALUES("
-                    + userID + ", '" + username + "', '" + password + "', " + birthday + ", " + birthmonth + ", " + birthyear + ", '" + profilePic + "', "
+                    + userID + ", '" + username + "', '" + password + "', " + birthday + ", '" + profilePic + "', "
                     + challengesCompleted + ", " + challengeAssigned + ", " + reputation + ")";
             database.insertQuery(insertString);
         } else {
             userID = database.dataBaseQueryInt("SELECT userID FROM users WHERE username='" + username + "'", "userID");
-        }
+        }*/
 
     }
 
@@ -62,14 +85,13 @@ public class UserData {
      */
     public int setNewChallenge() {
         int newID;
-        int maxChallengeIndex = database.searchLastIndex("SELECT challengeID FROM challenges ORDER BY challengeID DESC");
+        //int maxChallengeIndex = database.searchLastIndex("SELECT challengeID FROM challenges ORDER BY challengeID DESC");
         if (challengeAssigned == 0) {
             //generate new challenge
-            newID = Randomizer.getRandomInt(maxChallengeIndex)+1;
-            database.insertQuery("UPDATE users SET challengeAssinged=" + newID + " WHERE userID=" + userID);
-            database.insertQuery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
-            challengeAssigned = newID;
-            return newID;
+           // newID = Randomizer.getRandomInt(maxChallengeIndex)+1;
+           // database.insertQuery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
+           // challengeAssigned = newID;
+           // return newID;
         } else {
             //user already has a challenge assigned, return a nope
             return -1;
@@ -79,16 +101,15 @@ public class UserData {
     /**
      * Remove a challenge from a user
      *
-     * @param user The user giving up
      * @return If giving up was successful
      */
-    public int giveUp(UserData user) {
-        if (user.challengeAssigned != 0) {
+    public int giveUp() {
+        if (challengeAssigned != 0) {
             //challengeAddToDatabase(user.challengeAssigned);     //will be added to control unit
-            user.challengeAssigned = 0;
+            challengeAssigned = 0;
             return 1;
         } else {
-            user.reputation -= 2;
+            reputation -= 2;
             return 0;
         }
     }
@@ -101,7 +122,7 @@ public class UserData {
     private int generateUserID() {
         int nextFreeIDFromDatabase = 0;
         String query = "SELECT * FROM users ORDER BY userID DESC";
-        nextFreeIDFromDatabase = database.searchLastIndex(query);
+        //nextFreeIDFromDatabase = database.searchLastIndex(query);
         return nextFreeIDFromDatabase + 1;
     }
 

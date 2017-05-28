@@ -1,4 +1,4 @@
-package src.Administration;
+package Administration;
 
 /**
  * Created by Max on 02.01.2017.

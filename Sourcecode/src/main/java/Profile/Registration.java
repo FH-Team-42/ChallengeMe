@@ -1,9 +1,7 @@
-package src.Profile;
+package Profile;
 
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 /**
  * Created by Max on 02.01.2017.
@@ -19,7 +17,7 @@ public class Registration {
      * @param year The birthyear of the user
      * @return The unique user ID
      */
-    public static UserData register(String name, String password, int day, int month, int year) {
+    public static UserData register(String name, String password, Date day, int month, int year) {
         UserData user = new UserData(name, password, day, month, year);
         return user;
     }

@@ -1,4 +1,4 @@
-package src.Administration;
+package Administration;
 
 import java.sql.*;
 

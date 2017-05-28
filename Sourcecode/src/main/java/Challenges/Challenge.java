@@ -1,4 +1,4 @@
-package src.Challenges;
+package Challenges;
 
 
 import Administration.timerListener;
