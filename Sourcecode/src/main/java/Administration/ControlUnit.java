@@ -1,4 +1,4 @@
-package Administration;
+package administration;
 
 /**
  * Created by Max on 02.01.2017.

@@ -1,4 +1,5 @@
-package Administration;
+package administration.jpa.daos;
+
 
 import java.util.Collection;
 import java.util.List;

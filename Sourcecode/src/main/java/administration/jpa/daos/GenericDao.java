@@ -1,13 +1,16 @@
-package Administration;
+package administration.jpa.daos;
 
 /**
  * Created by Max on 28.05.2017.
  */
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
+
+
 
 /*
     Our generic Dao for all model objects
@@ -19,12 +22,12 @@ import java.util.List;
     Anyone, who needs a Dao must therefore use our DataController class.
 
  */
-class GenericDaoJPA<T extends AbstractDatabaseEntity> implements IGenericDao<T>
+class GenericDao<T extends AbstractDatabaseEntity> implements IGenericDao<T>
 {
     private final Class<T> persistentClass;
     private EntityManager entityManager;
 
-    public GenericDaoJPA( Class<T> type, EntityManager em )
+    public GenericDao(Class<T> type, EntityManager em )
     {
         this.persistentClass = type;
         this.entityManager = em;

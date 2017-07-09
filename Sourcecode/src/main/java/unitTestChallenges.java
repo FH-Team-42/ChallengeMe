@@ -1,6 +1,6 @@
 package src;
 
-import Profile.UserData;
+import model.UserData;
 import Challenges.Challenge;
 
 

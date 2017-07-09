@@ -1,4 +1,4 @@
-package src.Chat;
+package chat;
 
 import java.io.*;
 import java.net.*;

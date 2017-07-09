@@ -1,7 +1,7 @@
-package Profile;
+package model.profile;
 
-import Administration.connectDataBase;
-import Administration.Randomizer;
+import administration.jpa.daos.AbstractDatabaseEntity;
+import administration.Randomizer;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,8 +10,8 @@ import java.util.Date;
  * Created by Felix on 02.01.2017.
  */
 
-@Entity
-public class UserData {
+@Entity (name = "users")
+public class UserData extends AbstractDatabaseEntity{
 
     @Column
     private String username;
@@ -35,12 +35,9 @@ public class UserData {
     private int reputation;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int userID;                 //UserID in database
     //private connectDataBase database;   //connection to the database
-
-    @Version
-    private Long version;
 
     public UserData(){
 
@@ -85,13 +82,11 @@ public class UserData {
      */
     public int setNewChallenge() {
         int newID;
-        //int maxChallengeIndex = database.searchLastIndex("SELECT challengeID FROM challenges ORDER BY challengeID DESC");
         if (challengeAssigned == 0) {
             //generate new challenge
-           // newID = Randomizer.getRandomInt(maxChallengeIndex)+1;
-           // database.insertQuery("UPDATE challenges SET challenged=" + userID + " WHERE challengeID=" + newID);
-           // challengeAssigned = newID;
-           // return newID;
+            newID = Randomizer.getRandomInt(100)+1;
+            challengeAssigned = newID;
+            return newID;
         } else {
             //user already has a challenge assigned, return a nope
             return -1;
@@ -132,9 +127,7 @@ public class UserData {
      * @return The username
      */
     public String getName() {
-        String abfrageColumn = "username";
-        String query = "SELECT username From users WHERE userID = " + userID;
-        return database.dataBaseQueryString(query, abfrageColumn);
+        return username;
     }
 
     /**
@@ -143,9 +136,7 @@ public class UserData {
      * @return The users password
      */
     public String getPass() {
-        String abfrageColumn = "password";
-        String query = "SELECT password From users WHERE userID = " + userID;
-        return database.dataBaseQueryString(query, abfrageColumn);
+        return password;
     }
 
     /**
@@ -153,32 +144,8 @@ public class UserData {
      *
      * @return The users birthday
      */
-    public int getDay() {
-        String abfrageColumn = "birthday";
-        String query = "SELECT birthday From users WHERE userID = " + userID;
-        return database.dataBaseQueryInt(query, abfrageColumn);
-    }
-
-    /**
-     * Returns the users birthmonth
-     *
-     * @return The users birthmonth
-     */
-    public int getMonth() {
-        String abfrageColumn = "birthmonth";
-        String query = "SELECT birthmonth From users WHERE userID = " + userID;
-        return database.dataBaseQueryInt(query, abfrageColumn);
-    }
-
-    /**
-     * Returns the users birthyear
-     *
-     * @return The users birthyear
-     */
-    public int getYear() {
-        String abfrageColumn = "birthyear";
-        String query = "SELECT birthyear From users WHERE userID = " + userID;
-        return database.dataBaseQueryInt(query, abfrageColumn);
+    public Date getBirthday() {
+        return birthday;
     }
 
     /**
@@ -187,9 +154,7 @@ public class UserData {
      * @return The users ID
      */
     public int getUserID() {
-        String abfrageColumn = "userID";
-        String query = "SELECT userID From users WHERE username = '" + username + "'";
-        return database.dataBaseQueryInt(query, abfrageColumn);
+        return userID;
     }
 
     /**
@@ -198,9 +163,7 @@ public class UserData {
      * @return The users reputation
      */
     public int getReputation() {
-        String abfrageColumn = "reputation";
-        String query = "SELECT reputation From users WHERE userID = " + userID;
-        return database.dataBaseQueryInt(query, abfrageColumn);
+        return reputation;
     }
 
     /**
@@ -211,7 +174,6 @@ public class UserData {
     public void setName(String name) {
         username = name;
         String query = "UPDATE users SET username='" + name +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
     }
 
     /**
@@ -222,54 +184,20 @@ public class UserData {
     public void setPass(String pass) {
         password = pass;
         String query = "UPDATE users SET password='" + pass +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
     }
 
-    /**
-     * Sets the users birthday
-     *
-     * @param day The users birthday
-     */
-    public void setDay(int day) {
-        birthday = day;
-        String query = "UPDATE users SET birthday='" + day +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
-    }
-
-    /**
-     * Sets the users birth month
-     *
-     * @param month The users birth month
-     */
-    public void setMonth(int month) {
-        birthmonth = month;
-        String query = "UPDATE users SET birthmonth='" + month +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
-    }
 
     /**
      * Sets the users birth year
      *
-     * @param year The users birth year
+     * @param birthday The users birth year
      */
-    public void setYear(int year) {
-        birthyear = year;
-        String query = "UPDATE users SET birthyear='" + year +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
+    public void setYear(Date birthday) {
+        this.birthday = birthday;
+
     }
 
     public void voteForUser(int vote){
         reputation += vote;
-        int newVotes = database.dataBaseQueryInt("SELECT reputation FROM users WHERE userID=" +userID, "reputation");
-        newVotes += vote;
-        String query = "UPDATE users SET reputation='" + newVotes +  "' WHERE userID=" + userID;
-        database.insertQuery(query);
-    }
-
-    /**
-     * Disconnect from database
-     */
-    public void disconnectDB(){
-        database.disconnectDB();
     }
 }

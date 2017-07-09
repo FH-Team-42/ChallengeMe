@@ -1,4 +1,4 @@
-package Administration;
+package administration.jpa.daos;
 
 import javax.persistence.*;
 import java.util.Date;
