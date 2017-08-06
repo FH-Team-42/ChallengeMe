@@ -6,12 +6,14 @@ import javax.swing.*;
 
 /**
  * Created by Max on 05.02.2017.
+ *
+ * This class is responsible for starting a countdown if the challenge is started.
  */
-public class timerListener implements ActionListener {
+public class TimerListener implements ActionListener {
 
     int challengeCompletionTime;
 
-    public timerListener(int completionTimeOfStartingChallenge){
+    public TimerListener(int completionTimeOfStartingChallenge){
         challengeCompletionTime = completionTimeOfStartingChallenge;
     }
 

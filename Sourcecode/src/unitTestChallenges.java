@@ -8,8 +8,10 @@ import org.junit.Test;
 
 /**
  * Created by Max on 05.02.2017.
+ *
+ * A class for all tests to partial test the code
  */
-public class unitTestChallenges extends TestCase {
+public class UnitTestChallenges extends TestCase {
 
     private UserData testUserCreator;
     private UserData testUserChallenged;
@@ -50,8 +52,6 @@ public class unitTestChallenges extends TestCase {
         }
         assertEquals(testChallenge.getChallengedId(), testUserChallenged.getUserID());
         testChallenge.disconnectDB();
-        testUserChallenged.disconnectDB();
-        testUserCreator.disconnectDB();
     }
 
     @Test
@@ -71,8 +71,7 @@ public class unitTestChallenges extends TestCase {
         expectedVote--;
         assertEquals(testChallenge.getVote(), expectedVote);
         testChallenge.disconnectDB();
-        testUserChallenged.disconnectDB();
-        testUserCreator.disconnectDB();
+
     }
 
     @Test
@@ -86,8 +85,7 @@ public class unitTestChallenges extends TestCase {
         assertEquals(challengeTime, testChallenge.getCompletionTime());
         assertEquals(testUserCreator.getUserID(), testChallenge.getCreatorId());
         testChallenge.disconnectDB();
-        testUserChallenged.disconnectDB();
-        testUserCreator.disconnectDB();
+
     }
 
     @Test
@@ -107,7 +105,6 @@ public class unitTestChallenges extends TestCase {
         expectedReputation--;
         assertEquals(testUserCreator.getReputation(), expectedReputation);
         testChallenge.disconnectDB();
-        testUserChallenged.disconnectDB();
-        testUserCreator.disconnectDB();
+
     }
 }

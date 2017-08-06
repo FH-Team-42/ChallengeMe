@@ -4,6 +4,9 @@ import java.util.Random;
 
 /**
  * Created by Max on 02.01.2017.
+ *
+ * This class returns a random int if the equivalent method is called.
+ * The random int is used to assign a challenge to an user.
  */
 public class Randomizer {
 
